@@ -28,7 +28,7 @@ const Sidebar = () =>{
                             <li key={i.name}
                             onClick={()=>{setActive(i.name)}}
                             className={`
-                                        px-2 py-1 rounded-lg 
+                                        px-2 py-1 mx-3 rounded-lg 
                                         cursor-pointer
                                         ${active === i.name ? "bg-blue-600 text-white pr-10" : "text-black hover:bg-blue-100"}
                                     `}>
