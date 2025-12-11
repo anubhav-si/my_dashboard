@@ -8,7 +8,7 @@ function App() {
   
 
   return (
-     <div className=" bg-[#d3d5df] h-full "> 
+     <div className=" bg-[#d3d5df]  h-full"> 
           <Sidebar className="block"/>
      
       <div className="ml-52 block">

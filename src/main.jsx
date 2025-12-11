@@ -12,6 +12,10 @@ import Usercomponent from './component/sideBarComponent/inbox/component/usercomp
 import Inboxpage from './component/sideBarComponent/inbox/inboxpage.jsx'
 
 import Order_ListPage from './component/sideBarComponent/order_list/order_ListPage.jsx'
+import ProductListpage from './component/sideBarComponent/productstock/productStockpage.jsx'
+import PricingPage from './component/sideBarComponent/pricing/pricingPage.jsx'
+import TOdoPage from './component/sideBarComponent/Todo/todoPage.jsx'
+import ContactPage from './component/sideBarComponent/contact/contactpage.jsx'
 
 
 
@@ -44,6 +48,22 @@ const router = createBrowserRouter([
        {
         path:"order_list",
         element:<Order_ListPage/>
+      },
+       {
+        path:"product_stock",
+        element:<ProductListpage/>
+      },
+      {
+        path:"pricing",
+        element:<PricingPage/>
+      },
+      {
+        path:"to_do",
+        element:<TOdoPage/>
+      },
+       {
+        path:"contact",
+        element:<ContactPage/>
       },
     ]
   },

@@ -40,14 +40,14 @@ const Order_ListPage = () => {
   
    
   return (
-        <div className="px-8 min-h-screen ">
+        <div className="mx-10 min-h-screen ">
       
       {/* Page Title */}
       <h1 className="text-3xl font-bold mb-6">Order Lists</h1>
 
         <div className='bg-white rounded-2xl'>
             {/* Filter Bar */}
-      <div className="flex items-center gap-4 bg-white  p-4 rounded-xl shadow-sm mb-6">
+        <div className="flex items-center gap-4 bg-white  p-4 rounded-xl shadow-sm mb-6">
         <button  className="p-2 rounded-lg border">
           <i className="fa-solid fa-filter"></i>
         </button>
