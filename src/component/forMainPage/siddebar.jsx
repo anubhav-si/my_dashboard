@@ -16,7 +16,11 @@ const Sidebar = () =>{
             { name: "Product Stock", path: "/product_stock" },
             { name: "Pricing", path: "/pricing" },
             { name: "To-Do", path: "/to_do" },
-            { name: "Contact", path: "/contact" }
+            { name: "Contact", path: "/contact" },
+            { name: "Invoice", path: "/Invoice" },
+            { name: "Ui Elements", path: "/ui_elements" },
+            { name: "Team", path: "/team" },
+
         ];
     return (
         <div className=" fixed left-0 top-0 flex flex-col items-center shadow-2xl h-screen  bg-white w-52 "> 
@@ -40,16 +44,7 @@ const Sidebar = () =>{
                         ))}
                     </ul>
                 </div>
-                <div>
-                    <ul className=" flex flex-col gap-3  my-3 border-b-2 mb-3">
-                    
-                        <li>contact</li>
-                        <li>invoice</li>
-                        <li>UI Eelements</li>
-                        <li>team</li>
-                        <li>Table</li>
-                    </ul>
-                </div>
+               
                 <div>
                       <ul className=" flex  gap-3 flex-col ">
                         <li>settings</li>

@@ -16,6 +16,9 @@ import ProductListpage from './component/sideBarComponent/productstock/productSt
 import PricingPage from './component/sideBarComponent/pricing/pricingPage.jsx'
 import TOdoPage from './component/sideBarComponent/Todo/todoPage.jsx'
 import ContactPage from './component/sideBarComponent/contact/contactpage.jsx'
+import InvoicePage from './component/sideBarComponent/invoice/invoicePage.jsx'
+import UIElementsPage from './component/sideBarComponent/ui_element/uiElementPage.jsx'
+import TeamPage from './component/sideBarComponent/team/teamPage.jsx'
 
 
 
@@ -64,6 +67,18 @@ const router = createBrowserRouter([
        {
         path:"contact",
         element:<ContactPage/>
+      },
+      {
+        path:"invoice",
+        element:<InvoicePage/>
+      },
+      {
+        path:"ui_elements",
+        element:<UIElementsPage/>
+      },
+      {
+        path:"team",
+        element:<TeamPage/>
       },
     ]
   },
