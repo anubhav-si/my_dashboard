@@ -4,12 +4,14 @@ import icon from "../assets/icon_right.png";
 import flag from "../assets/flag.png";
 import usericon from "../assets/user_icon.png";
 import ProfileDropdown from "./forMainPage/profileDropdown";
+import NotificationDropdown from "./forMainPage/notificationDropdown";
 
 
 const Navigation_topbar = () => {
   const [open,setOpen] = useState(false);
+  const [active,setactive] = useState("")
   return (
-    <div className="w-full sticky top-0 left-52 z-50 bg-white shadow-xl flex items-center justify-between px-6 mb-10 h-16">
+    <div className="w-full sticky top-0 left-52 z-50 bg-white shadow-[6px_6px_20px_rgba(0,0,0,0.08)] flex items-center justify-between px-6 mb-10 h-16">
 
       {/* LEFT SECTION */}
       <div className="flex items-center space-x-4">
@@ -30,7 +32,11 @@ const Navigation_topbar = () => {
       <div className="flex items-center space-x-6">
 
         {/* Notification Icon */}
-        <img className="w-6 h-6 cursor-pointer" src={icon} alt="notification" />
+        <img 
+        onClick={()=>{setOpen(!open) 
+           setactive("notification")}}
+        className="w-6 h-6 cursor-pointer" 
+        src={icon} alt="notification" />
 
         {/* Language Selector */}
         <div className="flex items-center space-x-2 cursor-pointer">
@@ -41,7 +47,9 @@ const Navigation_topbar = () => {
         {/* USER PROFILE */}
         <div 
         className="flex items-center space-x-3 cursor-pointer "
-        onClick={()=> setOpen(!open) }>
+        onClick={()=> {setOpen(!open)
+          setactive("profile")
+        } }>
           <img className="w-9 h-9 rounded-full" src={usericon} alt="user" />
 
           <div className="leading-tight">
@@ -51,8 +59,11 @@ const Navigation_topbar = () => {
         </div>
 
       </div>
-      {open && (<div className="absolute top-3 right-6 ">
+      {open && active === "profile" && (<div className="absolute top-3 right-6 ">
         <ProfileDropdown/>
+      </div>)}
+      {open && active === "notification" && (<div className="absolute top-3 right-6 ">
+        <NotificationDropdown/>
       </div>)}
     </div>
   );

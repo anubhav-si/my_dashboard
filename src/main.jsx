@@ -19,7 +19,10 @@ import ContactPage from './component/sideBarComponent/contact/contactpage.jsx'
 import InvoicePage from './component/sideBarComponent/invoice/invoicePage.jsx'
 import UIElementsPage from './component/sideBarComponent/ui_element/uiElementPage.jsx'
 import TeamPage from './component/sideBarComponent/team/teamPage.jsx'
-
+import AddNewContact from './component/sideBarComponent/contact/components/addNewContectPage.jsx'
+import ContactListPage from './component/sideBarComponent/contact/components/contactListPage.jsx'
+import TeamMembersList from './component/sideBarComponent/team/components/teamMembersList.jsx'
+import AddNewMember from './component/sideBarComponent/team/components/addNewMember.jsx'
 
 
 const router = createBrowserRouter([
@@ -66,7 +69,18 @@ const router = createBrowserRouter([
       },
        {
         path:"contact",
-        element:<ContactPage/>
+        element:<ContactPage/>,
+        children:[
+          {
+            index: true,
+            element:<ContactListPage/>
+          },
+          {
+            path:"add_newContact",
+            element:<AddNewContact/>
+          },
+         
+        ]
       },
       {
         path:"invoice",
@@ -78,7 +92,17 @@ const router = createBrowserRouter([
       },
       {
         path:"team",
-        element:<TeamPage/>
+        element:<TeamPage/>,
+        children:[
+          {
+            index: true,
+            element:<TeamMembersList/>
+          },
+          {
+            path:"add_newmember",
+            element:<AddNewMember/>
+          }
+        ]
       },
     ]
   },

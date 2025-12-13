@@ -15,7 +15,7 @@ const Main_contentpage = () => {
    <div className=' w-full overflow-y-auto'>
        
         <div>
-          <h1 className='mb-7 mx-12 font-extrabold text-3xl'>Dashboard</h1>
+          <h1 className='mb-7 mx-12 font-extrabold text-3xl'>Home</h1>
         </div>
         <div className='flex mx-6'>
           <Mainpage_card title="Total User" count="40523" percentage="6.5" logo={totalUserLogo}/>

@@ -1,5 +1,5 @@
 import React from "react";
-
+import { Link, Outlet } from "react-router-dom";
 const contacts = [
   {
     id: 1,
@@ -43,40 +43,9 @@ const contacts = [
 const ContactPage = () => {
   return (
     <div className="mx-10">
-      {/* Header */}
-      <div className="flex justify-between items-center mb-6">
-        <h1 className="text-3xl font-extrabold">Contact</h1>
-
-        <button className="px-4 py-2 bg-blue-500 text-white rounded-lg shadow hover:bg-blue-600 transition">
-          Add New Contact
-        </button>
-      </div>
-
-      {/* Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        {contacts.map((c) => (
-          <div
-            key={c.id}
-            className="bg-white rounded-2xl shadow p-0 overflow-hidden border "
-          >
-            <img
-              src={c.img}
-              alt={c.name}
-              className="h-52 w-full object-cover"
-            />
-
-            <div className="p-5 text-center">
-              <h2 className="text-lg font-semibold">{c.name}</h2>
-              <p className="text-gray-500 text-sm mt-1">{c.email}</p>
-
-              <button className="w-full mt-4 border rounded-lg py-2 flex justify-center items-center gap-2 text-sm hover:bg-gray-100 transition">
-                <span>📩</span> Message
-              </button>
-            </div>
-          </div>
-        ))}
-      </div>
+      <Outlet/>
     </div>
+
   );
 };
 
