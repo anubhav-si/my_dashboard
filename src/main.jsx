@@ -10,7 +10,6 @@ import ProductsPage from './component/sideBarComponent/products/productPage.jsx'
 import FavouritePage from './component/sideBarComponent/Favorites/favouritePage.jsx'
 import Usercomponent from './component/sideBarComponent/inbox/component/usercomponent.jsx'
 import Inboxpage from './component/sideBarComponent/inbox/inboxpage.jsx'
-
 import Order_ListPage from './component/sideBarComponent/order_list/order_ListPage.jsx'
 import ProductListpage from './component/sideBarComponent/productstock/productStockpage.jsx'
 import PricingPage from './component/sideBarComponent/pricing/pricingPage.jsx'
@@ -23,15 +22,25 @@ import AddNewContact from './component/sideBarComponent/contact/components/addNe
 import ContactListPage from './component/sideBarComponent/contact/components/contactListPage.jsx'
 import TeamMembersList from './component/sideBarComponent/team/components/teamMembersList.jsx'
 import AddNewMember from './component/sideBarComponent/team/components/addNewMember.jsx'
+import LoginPage from './component/loginPage/loginPage.jsx'
+import SignupPage from './component/loginPage/signupPage.jsx'
 
 
 const router = createBrowserRouter([
+  {
+    path:"/login",
+    element:<LoginPage/>
+  },
+  {
+    path:"/signup",
+    element:<SignupPage/>
+  },
   {
     path:'/',
     element:<App/>,
     children:[
       {
-        path:"/",
+        index:true,
         element:<Main_contentpage/>
       },
       {
@@ -104,12 +113,10 @@ const router = createBrowserRouter([
           }
         ]
       },
+      
     ]
   },
-  {
-    path:'/test',
-    element:<Testfile/>
-  }
+ 
 ])
 
 createRoot(document.getElementById('root')).render(

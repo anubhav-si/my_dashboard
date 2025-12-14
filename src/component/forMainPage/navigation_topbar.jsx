@@ -1,13 +1,13 @@
 import React ,{useState} from "react";
-import img from "../assets/near_srh.png";
-import icon from "../assets/icon_right.png";
-import flag from "../assets/flag.png";
-import usericon from "../assets/user_icon.png";
-import ProfileDropdown from "./forMainPage/profileDropdown";
-import NotificationDropdown from "./forMainPage/notificationDropdown";
+import img from "../../assets/near_srh.png";
+import icon from "../../assets/icon_right.png";
+import flag from "../../assets/flag.png";
+import usericon from "../../assets/user_icon.png";
+import ProfileDropdown from "./profileDropdown";
+import NotificationDropdown from "./notificationDropdown";
 
 
-const Navigation_topbar = () => {
+const Navigation_topbar = ({setloginStatus}) => {
   const [open,setOpen] = useState(false);
   const [active,setactive] = useState("")
   return (
@@ -60,7 +60,7 @@ const Navigation_topbar = () => {
 
       </div>
       {open && active === "profile" && (<div className="absolute top-3 right-6 ">
-        <ProfileDropdown/>
+        <ProfileDropdown setloginStatus={setloginStatus}/>
       </div>)}
       {open && active === "notification" && (<div className="absolute top-3 right-6 ">
         <NotificationDropdown/>

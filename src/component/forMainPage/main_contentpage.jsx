@@ -1,5 +1,5 @@
 import React from 'react'
-import Navigation_topbar from '../navigation_topbar'
+import Navigation_topbar from './navigation_topbar';
 import Mainpage_card from '../cards/mainpage_card'
 import totalUserLogo from '../../assets/forCards/totaluser.png';
 import totalorderLogo from '../../assets/forCards/totalorder.png';
@@ -35,4 +35,4 @@ const Main_contentpage = () => {
   )
 }
 
-export default Main_contentpage
+export default Main_contentpage;

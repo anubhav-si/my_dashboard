@@ -6,7 +6,7 @@ const ChartComponent = ({data}) => {
   console.log(data);
   
   return (
-    <div className=' bg-white w-90% m-8 rounded-2xl'>
+    <div className=' bg-white w-90% m-8 rounded-2xl shadow-2xl'>
       <div className='flex items-center justify-between p-5 '>
         <h1 className='font-bold text-2xl'>Sales details</h1>
        <select className="border px-3 py-1 rounded-lg text-gray-600">
