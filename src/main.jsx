@@ -24,6 +24,7 @@ import TeamMembersList from './component/sideBarComponent/team/components/teamMe
 import AddNewMember from './component/sideBarComponent/team/components/addNewMember.jsx'
 import LoginPage from './component/loginPage/loginPage.jsx'
 import SignupPage from './component/loginPage/signupPage.jsx'
+import NotFound from './component/errors/notFound.jsx'
 
 
 const router = createBrowserRouter([
@@ -38,6 +39,7 @@ const router = createBrowserRouter([
   {
     path:'/',
     element:<App/>,
+    errorElement:<NotFound/>,
     children:[
       {
         index:true,
