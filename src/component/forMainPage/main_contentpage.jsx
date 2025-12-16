@@ -10,7 +10,7 @@ import Prod_co_mainP from './prod_co_mainP';
 import salesData from './dataForMainPageChart';
 
 const Main_contentpage = () => {
-  console.log(salesData);
+  
   return (
    <div className=' w-full overflow-y-auto'>
        

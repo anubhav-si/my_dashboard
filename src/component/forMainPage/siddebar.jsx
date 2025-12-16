@@ -9,7 +9,7 @@ const Sidebar = () =>{
         const menu = [
             { name: "Home", path: "/" },
             { name: "Dashboard", path: "/dashboard" },
-            { name: "Product", path: "/Products" },
+            { name: "Product", path: "/products" },
             { name: "Favorites", path: "/favourite" },
             { name: "Inbox", path: "/inbox" },
             { name: "Order Lists", path: "/order_list" },
@@ -31,8 +31,10 @@ const Sidebar = () =>{
                 <div>
                     <ul className=" flex flex-col gap-3 my-3 border-b-2  mb-3">
                         {menu.map((i)=>(
-                            <Link to={i.path}>
-                            <li key={i.name}
+                            <Link 
+                            key={i.name}
+                            to={i.path}>
+                            <li 
                             onClick={()=>{setActive(i.name)}}
                             className={`
                                         px-2 py-1 mx-3 rounded-lg 

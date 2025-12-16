@@ -25,7 +25,7 @@ import AddNewMember from './component/sideBarComponent/team/components/addNewMem
 import LoginPage from './component/loginPage/loginPage.jsx'
 import SignupPage from './component/loginPage/signupPage.jsx'
 import NotFound from './component/errors/notFound.jsx'
-
+import { AuthProvider } from './context/authcontect.jsx'
 
 const router = createBrowserRouter([
   {
@@ -123,6 +123,9 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <RouterProvider router={router}/>
+    <AuthProvider>
+      <RouterProvider router={router}/>
+    </AuthProvider>
+    
   </StrictMode>,
 );

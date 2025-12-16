@@ -1,10 +1,14 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React,{useContext} from "react";
+import { AuthContext } from "../../context/authcontect";
+import { Link, useNavigate } from "react-router-dom";
 
-const LoginPage = ({setloginStatus}) => {
+const LoginPage = () => {
+  const {isLoggedIn, setIsLoggedIn} = useContext(AuthContext);
+  const navigate = useNavigate();
   const handlesubmit = (e)=>{
     e.preventDefault();
-    setloginStatus(true);
+    setIsLoggedIn(true);
+    navigate("/");
   }
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-500 to-blue-400">

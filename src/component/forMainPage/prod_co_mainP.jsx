@@ -8,11 +8,7 @@ const productApiData = async () =>{
     const json = await data.json();
     setproduct(json);
 }
-console.log(product);
-
-
-
-    useEffect(() => {
+  useEffect(() => {
          productApiData()
     },[]
     );

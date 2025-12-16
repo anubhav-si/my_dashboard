@@ -1,8 +1,15 @@
-import React from "react";
+import React, { useContext } from "react";
 import { FaUserCog, FaKey, FaHistory, FaSignOutAlt } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { AuthContext } from "../../context/authcontect";
 
-const ProfileDropdown = ({setloginStatus}) => {
+const ProfileDropdown = () => {
+  const {isLoggedIn, setIsLoggedIn} = useContext(AuthContext);
+  const navigate = useNavigate();
+    const handleLogout = () => {
+      setIsLoggedIn(false);
+      navigate("/login");
+    };
   return (
     <div className="absolute right-4 top-14 w-56 bg-white shadow-xl rounded-xl border border-gray-200 py-2 z-50 animate-fadeIn">
 
@@ -26,7 +33,7 @@ const ProfileDropdown = ({setloginStatus}) => {
       <div className="border-t my-1"></div>
 
       <div 
-      onClick={()=>setloginStatus(false)}
+      onClick={handleLogout}
       className="group flex items-center px-4 py-2 cursor-pointer hover:bg-gray-100 transition">
         <FaSignOutAlt className="text-red-500 text-base mr-3 group-hover:scale-110 transition" />
         <p className="text-sm text-gray-700 group-hover:text-black">Log out</p>

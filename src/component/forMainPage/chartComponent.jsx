@@ -3,10 +3,10 @@ import React from 'react';
 import {LineChart,Line,ResponsiveContainer, XAxis, YAxis, Tooltip,CartesianGrid, AreaChart} from "recharts";
 
 const ChartComponent = ({data}) => {
-  console.log(data);
+ 
   
   return (
-    <div className=' bg-white w-90% m-8 rounded-2xl shadow-2xl'>
+    <div className=' bg-white w-[95%] m-10 rounded-2xl shadow-2xl'>
       <div className='flex items-center justify-between p-5 '>
         <h1 className='font-bold text-2xl'>Sales details</h1>
        <select className="border px-3 py-1 rounded-lg text-gray-600">
@@ -15,8 +15,8 @@ const ChartComponent = ({data}) => {
                     <option>August</option>
                     </select>
       </div>
-      <div className='h-[300px] w-90% p-8 pt-0 ' >
-        <ResponsiveContainer>
+      <div className='h-[300px] w-[98%]  pt-0 ' >
+        <ResponsiveContainer width="100%" height="100%">
           <AreaChart data={data}>
             <CartesianGrid strokeDasharray="3 3" vertical={false}/>
 

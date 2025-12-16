@@ -3,13 +3,14 @@ import { Outlet } from "react-router-dom";
 import Sidebar from "./component/forMainPage/siddebar";
 import Navigation_topbar from "./component/forMainPage/navigation_topbar";
 import LoginPage from "./component/loginPage/loginPage";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { AuthContext } from "./context/authcontect";
 function App() {
-  const [loginStatus,setloginStatus] = useState(false);
+  const {isLoggedIn, setIsLoggedIn} = useContext(AuthContext);
 
 
-  if(!loginStatus){
-    return <LoginPage setloginStatus={setloginStatus}/>
+  if(!isLoggedIn){
+    return <LoginPage />
   }
 
 
@@ -19,7 +20,7 @@ function App() {
      
       <div className="ml-52 block">
             
-            <Navigation_topbar setloginStatus={setloginStatus}/>
+            <Navigation_topbar />
             <Outlet className="w-full h-full"/>
             
       </div>
