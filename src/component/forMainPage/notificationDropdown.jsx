@@ -3,9 +3,11 @@ import { FiSettings } from "react-icons/fi";
 import { MdEventNote, MdErrorOutline } from "react-icons/md";
 import { FaUserCircle } from "react-icons/fa";
 
-const NotificationDropdown = () => {
+const NotificationDropdown = ({open,setOpen}) => {
   return (
-    <div className="absolute right-24 top-14 w-70 bg-white rounded-2xl shadow-xl z-50 overflow-hidden">
+    <div 
+    onClick={()=>setOpen(!open)}
+    className="absolute right-24 top-14 w-70 bg-white rounded-2xl shadow-xl z-50 overflow-hidden">
 
       {/* HEADER */}
       <div className="px-5 py-3 border-b">

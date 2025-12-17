@@ -26,6 +26,7 @@ import LoginPage from './component/loginPage/loginPage.jsx'
 import SignupPage from './component/loginPage/signupPage.jsx'
 import NotFound from './component/errors/notFound.jsx'
 import { AuthProvider } from './context/authcontect.jsx'
+import SettingsPage from './component/sideBarComponent/settings/settings.jsx'
 
 const router = createBrowserRouter([
   {
@@ -114,6 +115,10 @@ const router = createBrowserRouter([
             element:<AddNewMember/>
           }
         ]
+      },
+      {
+        path:"settings",
+        element:<SettingsPage/>
       },
       
     ]

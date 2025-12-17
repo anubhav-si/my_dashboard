@@ -20,6 +20,7 @@ const Sidebar = () =>{
             { name: "Invoice", path: "/Invoice" },
             { name: "Ui Elements", path: "/ui_elements" },
             { name: "Team", path: "/team" },
+            { name: "Settings", path: "/settings" },
 
         ];
     return (
@@ -49,7 +50,7 @@ const Sidebar = () =>{
                
                 <div>
                       <ul className=" flex  gap-3 flex-col ">
-                        <li>settings</li>
+                       
                         <li>Logout</li>
                        
                     </ul>

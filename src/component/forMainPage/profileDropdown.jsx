@@ -3,7 +3,7 @@ import { FaUserCog, FaKey, FaHistory, FaSignOutAlt } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/authcontect";
 
-const ProfileDropdown = () => {
+const ProfileDropdown = ({open,setOpen}) => {
   const {isLoggedIn, setIsLoggedIn} = useContext(AuthContext);
   const navigate = useNavigate();
     const handleLogout = () => {
@@ -11,7 +11,9 @@ const ProfileDropdown = () => {
       navigate("/login");
     };
   return (
-    <div className="absolute right-4 top-14 w-56 bg-white shadow-xl rounded-xl border border-gray-200 py-2 z-50 animate-fadeIn">
+    <div 
+    onClick={()=>setOpen(!open)}
+    className="absolute right-4 top-14 w-56 bg-white shadow-xl rounded-xl border border-gray-200 py-2 z-50 animate-fadeIn">
 
       {/* OPTION */}
       <div className="group flex items-center px-4 py-2 cursor-pointer hover:bg-gray-100 transition">

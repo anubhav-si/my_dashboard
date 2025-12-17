@@ -60,10 +60,10 @@ const Navigation_topbar = ({setloginStatus}) => {
 
       </div>
       {open && active === "profile" && (<div className="absolute top-3 right-6 ">
-        <ProfileDropdown setloginStatus={setloginStatus}/>
+        <ProfileDropdown setloginStatus={setloginStatus} setOpen={setOpen} open={open}/>
       </div>)}
       {open && active === "notification" && (<div className="absolute top-3 right-6 ">
-        <NotificationDropdown/>
+        <NotificationDropdown setOpen={setOpen} open={open}/>
       </div>)}
     </div>
   );
