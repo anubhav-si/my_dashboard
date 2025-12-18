@@ -1,5 +1,6 @@
 import React, { useState,useEffect } from "react";
 import ProductCard from "./component/cards";
+import ShimmerUI from "./component/shimmerUI";
 
 const FavouritePage = () => {
     const [product , setproduct] = useState([]);
@@ -10,9 +11,11 @@ const FavouritePage = () => {
     }
     useEffect(()=>{
         productApiData();
-    });
+    },[]);
   return (
+
     <div>
+      {product.length === 0 && <ShimmerUI />}
       <div>
           <h1 className='my-7 mx-12 font-extrabold text-3xl'>Favorites</h1>
       </div>

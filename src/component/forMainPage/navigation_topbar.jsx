@@ -9,7 +9,8 @@ import NotificationDropdown from "./notificationDropdown";
 
 const Navigation_topbar = ({setloginStatus}) => {
   const [open,setOpen] = useState(false);
-  const [active,setactive] = useState("")
+  const [active,setactive] = useState("");
+  const [darkMode, setDarkMode] = useState(false);
   return (
     <div className="w-full sticky top-0 left-52 z-50 bg-white shadow-[6px_6px_20px_rgba(0,0,0,0.08)] flex items-center justify-between px-6 mb-10 h-16">
 
@@ -39,10 +40,21 @@ const Navigation_topbar = ({setloginStatus}) => {
         src={icon} alt="notification" />
 
         {/* Language Selector */}
-        <div className="flex items-center space-x-2 cursor-pointer">
-          <img className="w-6" src={flag} alt="flag" />
-          <p className="text-sm text-gray-700">English</p>
+       <div
+          onClick={() => setDarkMode(prev => !prev)}
+          className="flex items-center space-x-2 cursor-pointer px-3 py-1 rounded-full bg-gray-100 hover:bg-gray-200 transition"
+        >
+          {darkMode ? (
+            <span className="text-lg">🌙</span>
+          ) : (
+            <span className="text-lg">☀️</span>
+          )}
+
+          <p className="text-sm text-gray-700">
+            {darkMode ? "Dark" : "Light"}
+          </p>
         </div>
+
 
         {/* USER PROFILE */}
         <div 
