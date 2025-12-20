@@ -1,8 +1,7 @@
 import React ,{useState} from "react";
-import img from "../../assets/near_srh.png";
-import icon from "../../assets/icon_right.png";
-import flag from "../../assets/flag.png";
-import usericon from "../../assets/user_icon.png";
+import img from "../../assets/icons/near_srh.png";
+import icon from "../../assets/icons/icon_right.png";
+import usericon from "../../assets/icons/user_icon.png";
 import ProfileDropdown from "./profileDropdown";
 import NotificationDropdown from "./notificationDropdown";
 
