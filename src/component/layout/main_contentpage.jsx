@@ -1,12 +1,12 @@
 import React from 'react'
-import Navigation_topbar from './navigation_topbar';
-import Mainpage_card from '../cards/mainpage_card'
+import Navigation_topbar from './topbar';
+import Mainpage_card from '../common/mainpage_card';
 import totalUserLogo from '../../assets/icons/totaluser.png';
 import totalorderLogo from '../../assets/icons/totalorder.png';
 import totalsalesLogo from '../../assets/icons/totalsales.png';
 import totalpendingLogo from '../../assets/icons/totalpending.png';
 import ChartComponent from './chartComponent';
-import Prod_co_mainP from './prod_co_mainP';
+import Prod_co_mainP from './productlist';
 import salesData from './dataForMainPageChart';
 
 const Main_contentpage = () => {

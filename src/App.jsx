@@ -1,8 +1,8 @@
 
 import { Outlet } from "react-router-dom";
-import Sidebar from "./component/forMainPage/siddebar";
-import Navigation_topbar from "./component/forMainPage/navigation_topbar";
-import LoginPage from "./component/loginPage/loginPage";
+import Sidebar from "./component/layout/siddebar";
+import Navigation_topbar from "./component/layout/topbar";
+import LoginPage from "./component/features/auth/loginPage";
 import { useContext, useState } from "react";
 import { AuthContext } from "./context/authcontect";
 function App() {
