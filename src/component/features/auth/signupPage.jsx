@@ -2,6 +2,27 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const SignupPage = () => {
+
+  const handleSignup = async(e) => {
+    e.preventDefault();
+    const formData = new FormData(e.target);
+    const data = {
+      username: formData.get("username"),
+      email: formData.get("email"),
+      password: formData.get("password")
+    };
+
+    const res = await fetch("http://localhost:3001/signup",{
+      method:"post",
+      headers: {
+        "Content-Type":"application/json"
+      },
+      body: JSON.stringify(data),
+    })
+    const result = await res.json();
+    console.log(result);
+    
+  }
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-500 via-blue-400 to-blue-500">
       
@@ -17,12 +38,15 @@ const SignupPage = () => {
         </p>
 
         {/* Form */}
-        <form className="mt-6 space-y-4">
+        <form 
+        onSubmit={handleSignup}
+        className="mt-6 space-y-4">
 
           {/* Email */}
           <div>
             <label className="text-sm text-gray-600">Email address</label>
             <input
+              name="email"
               type="email"
               placeholder="esteban_schiller@gmail.com"
               className="mt-1 w-full px-4 py-2 rounded-lg bg-gray-100 border border-gray-200 
@@ -34,6 +58,7 @@ const SignupPage = () => {
           <div>
             <label className="text-sm text-gray-600">Username</label>
             <input
+              name="username"
               type="text"
               placeholder="Username"
               className="mt-1 w-full px-4 py-2 rounded-lg bg-gray-100 border border-gray-200 
@@ -50,6 +75,7 @@ const SignupPage = () => {
               </span>
             </div>
             <input
+              name="password"
               type="password"
               placeholder="••••••••"
               className="mt-1 w-full px-4 py-2 rounded-lg bg-gray-100 border border-gray-200 
