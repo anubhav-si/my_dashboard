@@ -1,7 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 const SignupPage = () => {
+  const [formData, setFormData] = useState({
+  email: "",
+  username: "",
+  password: "",
+  confirmPassword: "",
+  terms: false
+});
 
   const handleSignup = async(e) => {
     e.preventDefault();
@@ -11,7 +18,7 @@ const SignupPage = () => {
       email: formData.get("email"),
       password: formData.get("password")
     };
-
+    
     const res = await fetch("http://localhost:3001/signup",{
       method:"post",
       headers: {
