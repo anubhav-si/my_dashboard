@@ -6,12 +6,34 @@ const SignupPage = () => {
   email: "",
   username: "",
   password: "",
-  confirmPassword: "",
   terms: false
 });
+const [error,seterror] = useState({});
+const handlechange = (e) =>{
+  const {name,value,type,checked} = e.target;
+  setFormData({...formData,
+    [name] : type === "checked" ? checked : value,
+
+  });
+};
+const validate =() =>{
+  const newErrors = {}
+
+  if(!formData.email) newErrors.email ="Email is required";
+  if(!formData.username) newErrors.username = "username is required";
+  if(formData.password.length < 6 ) newErrors.password = "password must be minimum 6 character";
+  if(!formData.terms) newErrors.terms = "accept Terms & Condition";
+
+  seterror(newErrors);
+  return Object.keys(newErrors).length === 0;
+}
 
   const handleSignup = async(e) => {
     e.preventDefault();
+
+    if(!validate) return;
+
+
     const formData = new FormData(e.target);
     const data = {
       username: formData.get("username"),
@@ -55,10 +77,14 @@ const SignupPage = () => {
             <input
               name="email"
               type="email"
+              value={formData.email}
               placeholder="esteban_schiller@gmail.com"
               className="mt-1 w-full px-4 py-2 rounded-lg bg-gray-100 border border-gray-200 
               focus:outline-none focus:ring-2 focus:ring-blue-400"
             />
+             {error.email && (
+              <p className="text-red-500 text-sm">{errors.email}</p>
+            )}
           </div>
 
           {/* Username */}
@@ -67,10 +93,14 @@ const SignupPage = () => {
             <input
               name="username"
               type="text"
+              value={formData.username}
               placeholder="Username"
               className="mt-1 w-full px-4 py-2 rounded-lg bg-gray-100 border border-gray-200 
               focus:outline-none focus:ring-2 focus:ring-blue-400"
             />
+             {error.username && (
+              <p className="text-red-500 text-sm">{errors.username}</p>
+            )}
           </div>
 
           {/* Password */}
@@ -84,10 +114,15 @@ const SignupPage = () => {
             <input
               name="password"
               type="password"
+              value={formData.password}
               placeholder="••••••••"
               className="mt-1 w-full px-4 py-2 rounded-lg bg-gray-100 border border-gray-200 
               focus:outline-none focus:ring-2 focus:ring-blue-400"
             />
+            {error.password && (
+              <p className="text-red-500 text-sm">{errors.password}</p>
+            )}
+            
           </div>
 
           {/* Terms */}
@@ -96,6 +131,9 @@ const SignupPage = () => {
             <span className="text-sm text-gray-600">
               I accept terms and conditions
             </span>
+            {error.terms && (
+              <p className="text-red-500 text-sm">{errors.terms}</p>
+            )}
           </div>
 
           {/* Button */}
