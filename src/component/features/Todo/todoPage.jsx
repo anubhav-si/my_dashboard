@@ -5,7 +5,8 @@ import { tasks } from "./utils/data";
 
 
 const TOdoPage = () => {
-    const [task,settask] = useState([]);
+  const [isOpen,setisOpen] = useState(false);
+    const [task,settask] = useState(tasks);
     
     const taskHandler = ()=>{
       
@@ -22,14 +23,27 @@ const TOdoPage = () => {
       <div className="w-full  sticky top-0 z-30 flex justify-between items-center  mb-10">
         <h2 className="text-3xl font-extrabold  items-center">To-Do List</h2>
 
-        <div className="shadow rounded-full flex  px-4 py-2 mr-10  font-bold text-white bg-blue-600">
+        <div 
+        onClick={()=>setisOpen(true)}
+        className="shadow rounded-full flex  px-4 py-2 mr-10  font-bold text-white bg-blue-600">
               <button>Add new task</button>
         </div>
       </div>
+      
+       
+               <div  className="w-full bg-white rounded-xl border my-6 border-gray-200  flex items-center justify-between hover:shadow-sm transition-all">
+                      
+                        <div className="flex items-center m-4 justify-between w-full gap-3">
+                            <input className="border h-10/12 w-8/12 rounded-2xl py-3 px-4" type="text" />
+                              <button className="w-7 h-7 flex items-center justify-center rounded-full border border-gray-300 hover:bg-gray-100 transition">
+                                ✖
+                                </button>
+                        </div>
+                </div>
 
-            {tasks.map((t)=>{
-                return (
-                    <div key={t.id} className="w-full bg-white rounded-xl border my-6 border-gray-200 p-4 flex items-center justify-between hover:shadow-sm transition-all">
+            {task.map((t)=>{
+              return (
+                <div key={t.id} className="w-full bg-white rounded-xl border my-6 border-gray-200 p-4 flex items-center justify-between hover:shadow-sm transition-all">
                         {/* Left side: checkbox + text */}
                         <div className="flex items-center gap-3">
                             <div className="w-5 h-5 rounded border bg-blue-500 border-gray-300"></div>
@@ -50,7 +64,10 @@ const TOdoPage = () => {
                                 </button>
                         </div>
                     </div>
-                       )
+              )
+                
+                    
+                       
              })}
                 
       </div>

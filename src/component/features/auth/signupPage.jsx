@@ -12,7 +12,7 @@ const [error,seterror] = useState({});
 const handlechange = (e) =>{
   const {name,value,type,checked} = e.target;
   setFormData({...formData,
-    [name] : type === "checked" ? checked : value,
+    [name] : type === "checkbox" ? checked : value,
 
   });
 };
@@ -31,15 +31,15 @@ const validate =() =>{
   const handleSignup = async(e) => {
     e.preventDefault();
 
-    if(!validate) return;
+    if(!validate()) return;
 
 
-    const formData = new FormData(e.target);
-    const data = {
-      username: formData.get("username"),
-      email: formData.get("email"),
-      password: formData.get("password")
-    };
+    // const formData = new FormData(e.target);
+    // const data = {
+    //   username: formData.get("username"),
+    //   email: formData.get("email"),
+    //   password: formData.get("password")
+    // };
     
     const res = await fetch("http://localhost:3001/signup",{
       method:"post",
