@@ -1,5 +1,4 @@
 import React ,{useEffect,useState}from "react";
-import { use } from "react";
 import { tasks } from "./utils/data";
 
 
@@ -8,8 +7,8 @@ const TOdoPage = () => {
   const [isOpen,setisOpen] = useState(false);
     const [task,settask] = useState(tasks);
 
-    const handleClick = (e) =>{
-      
+    const handleClick = () =>{
+      setisOpen(false)
 
 
     };
@@ -20,8 +19,10 @@ const TOdoPage = () => {
     useEffect(()=>{
         taskHandler();
     },[task]);
+    
 
   return (
+    
     <div className="mx-10 min-h-screen  ">
       {/* Page Title */}
      
@@ -29,24 +30,94 @@ const TOdoPage = () => {
       <div className="w-full  sticky top-0 z-30 flex justify-between items-center  mb-10">
         <h2 className="text-3xl font-extrabold  items-center">To-Do List</h2>
 
-        <div 
-        onClick={()=>setisOpen(true)}
+
+      { !isOpen && (
+         <div 
+        onClick={()=>setisOpen(!isOpen)}
         className="shadow rounded-full flex  px-4 py-2 mr-10  font-bold text-white bg-blue-600">
-              <button>{!isOpen ? `add new task` : `add task`}</button>
+              <button>Add new task</button>
         </div>
+      )}
+
+      
+       
       </div>
       
-       {isOpen &&  (
-        <div  className="w-full bg-white rounded-xl border my-6 border-gray-200  flex items-center justify-between hover:shadow-sm transition-all">
-                      
-                        <div className="flex items-center m-4 justify-between w-full gap-3">
-                            <input className="border h-10/12 w-8/12 rounded-2xl py-3 px-4" type="text" />
-                              <button className="w-7 h-7 flex items-center justify-center rounded-full border border-gray-300 hover:bg-gray-100 transition">
-                                ✖
-                                </button>
-                        </div>
+       {isOpen && (
+              <div className="w-full max-w-3xl mx-auto my-6">
+                <div className="bg-white rounded-2xl border border-gray-200 shadow-sm hover:shadow-md transition-all">
+                  
+                  {/* Header */}
+                  <div className="px-6 py-4 border-b border-gray-100">
+                    <h2 className="text-lg font-semibold text-gray-800">
+                      Add New Task
+                    </h2>
+                    <p className="text-sm text-gray-500">
+                      Fill in the details below to create a task
+                    </p>
+                  </div>
+
+                  {/* Form */}
+                  <form className="px-6 py-5 space-y-5">
+                    
+                    {/* Task Title */}
+                    <div className="flex flex-col gap-1">
+                      <label className="text-sm font-medium text-gray-700">
+                        Task Title
+                      </label>
+                      <input
+                        type="text"
+                        placeholder="e.g. Design dashboard UI"
+                        className="w-full rounded-xl border border-gray-300 px-4 py-2.5 text-sm
+                                  focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500
+                                  transition"
+                      />
+                    </div>
+
+                    {/* Description */}
+                    <div className="flex flex-col gap-1">
+                      <label className="text-sm font-medium text-gray-700">
+                        Description
+                      </label>
+                      <input
+                        type="text"
+                        
+                        placeholder="Brief description of the task"
+                        className="w-full rounded-xl border border-gray-300 px-4 py-2.5 text-sm
+                                  focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500
+                                  transition"
+                      />
+                    </div>
+
+                    {/* Actions */}
+                    <div className="flex justify-end gap-3 pt-4">
+                      <button
+                        type="button"
+                        name="cancle"
+                        onClick={handleClick}
+                        className="px-5 py-2.5 rounded-xl text-sm font-medium
+                                  border border-gray-300 text-gray-700
+                                  hover:bg-gray-100 transition"
+                      >
+                        Cancel
+                      </button>
+
+                      <button
+                        type="button"
+                        name="add"
+                        onClick={handleClick}
+                        className="px-5 py-2.5 rounded-xl text-sm font-medium
+                                  bg-indigo-600 text-white
+                                  hover:bg-indigo-700 active:scale-95 transition"
+                      >
+                        Add Task
+                      </button>
+                    </div>
+
+                  </form>
                 </div>
-       )}
+              </div>
+            )}
                
 
             {task.map((t)=>{
