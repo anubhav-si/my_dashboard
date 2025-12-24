@@ -7,6 +7,12 @@ import { tasks } from "./utils/data";
 const TOdoPage = () => {
   const [isOpen,setisOpen] = useState(false);
     const [task,settask] = useState(tasks);
+
+    const handleClick = (e) =>{
+      
+
+
+    };
     
     const taskHandler = ()=>{
       
@@ -26,12 +32,12 @@ const TOdoPage = () => {
         <div 
         onClick={()=>setisOpen(true)}
         className="shadow rounded-full flex  px-4 py-2 mr-10  font-bold text-white bg-blue-600">
-              <button>Add new task</button>
+              <button>{!isOpen ? `add new task` : `add task`}</button>
         </div>
       </div>
       
-       
-               <div  className="w-full bg-white rounded-xl border my-6 border-gray-200  flex items-center justify-between hover:shadow-sm transition-all">
+       {isOpen &&  (
+        <div  className="w-full bg-white rounded-xl border my-6 border-gray-200  flex items-center justify-between hover:shadow-sm transition-all">
                       
                         <div className="flex items-center m-4 justify-between w-full gap-3">
                             <input className="border h-10/12 w-8/12 rounded-2xl py-3 px-4" type="text" />
@@ -40,6 +46,8 @@ const TOdoPage = () => {
                                 </button>
                         </div>
                 </div>
+       )}
+               
 
             {task.map((t)=>{
               return (
