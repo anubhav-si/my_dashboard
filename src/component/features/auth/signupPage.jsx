@@ -1,7 +1,8 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 
 const SignupPage = () => {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
   email: "",
   username: "",
@@ -33,23 +34,16 @@ const validate =() =>{
 
     if(!validate()) return;
 
-
-    // const formData = new FormData(e.target);
-    // const data = {
-    //   username: formData.get("username"),
-    //   email: formData.get("email"),
-    //   password: formData.get("password")
-    // };
     
     const res = await fetch("http://localhost:3001/signup",{
       method:"post",
       headers: {
         "Content-Type":"application/json"
       },
-      body: JSON.stringify(data),
+      body: JSON.stringify(formData),
     })
     const result = await res.json();
-    console.log(result);
+    if(result.status === 'ok') navigate("/login");
     
   }
   return (
@@ -78,12 +72,13 @@ const validate =() =>{
               name="email"
               type="email"
               value={formData.email}
+              onChange={handlechange}
               placeholder="esteban_schiller@gmail.com"
               className="mt-1 w-full px-4 py-2 rounded-lg bg-gray-100 border border-gray-200 
               focus:outline-none focus:ring-2 focus:ring-blue-400"
             />
              {error.email && (
-              <p className="text-red-500 text-sm">{errors.email}</p>
+              <p className="text-red-500 text-sm">{error.email}</p>
             )}
           </div>
 
@@ -94,12 +89,13 @@ const validate =() =>{
               name="username"
               type="text"
               value={formData.username}
+              onChange={handlechange}
               placeholder="Username"
               className="mt-1 w-full px-4 py-2 rounded-lg bg-gray-100 border border-gray-200 
               focus:outline-none focus:ring-2 focus:ring-blue-400"
             />
              {error.username && (
-              <p className="text-red-500 text-sm">{errors.username}</p>
+              <p className="text-red-500 text-sm">{error.username}</p>
             )}
           </div>
 
@@ -115,24 +111,30 @@ const validate =() =>{
               name="password"
               type="password"
               value={formData.password}
+              onChange={handlechange}
               placeholder="••••••••"
               className="mt-1 w-full px-4 py-2 rounded-lg bg-gray-100 border border-gray-200 
               focus:outline-none focus:ring-2 focus:ring-blue-400"
             />
             {error.password && (
-              <p className="text-red-500 text-sm">{errors.password}</p>
+              <p className="text-red-500 text-sm">{error.password}</p>
             )}
             
           </div>
 
           {/* Terms */}
           <div className="flex items-center space-x-2">
-            <input type="checkbox" className="rounded border-gray-300" />
+            <input 
+            type="checkbox" 
+            name="terms"
+            checked={formData.terms}
+            onChange={handlechange}
+            className="rounded border-gray-300" />
             <span className="text-sm text-gray-600">
               I accept terms and conditions
             </span>
             {error.terms && (
-              <p className="text-red-500 text-sm">{errors.terms}</p>
+              <p className="text-red-500 text-sm">{error.terms}</p>
             )}
           </div>
 
