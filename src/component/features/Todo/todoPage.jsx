@@ -1,4 +1,5 @@
 import React ,{useEffect,useState}from "react";
+
 import { tasks } from "./utils/data";
 
 
@@ -6,21 +7,22 @@ import { tasks } from "./utils/data";
 const TOdoPage = () => {
   const [isOpen,setisOpen] = useState(false);
     const [task,settask] = useState(tasks);
+    const [newTask,setNewTask] = useState({
+      title:"",
+      description:""});
 
     const handleClick = () =>{
+      if(!newTask.title && !newTask.description) return ;
+
+      settask([...task,newTask]);
+
+      setNewTask({});
       setisOpen(false)
 
 
     };
     
-    const taskHandler = ()=>{
-      
-    }
-    useEffect(()=>{
-        taskHandler();
-    },[task]);
-    
-
+   
   return (
     
     <div className="mx-10 min-h-screen  ">
@@ -67,6 +69,8 @@ const TOdoPage = () => {
                       </label>
                       <input
                         type="text"
+                        value={newTask.title}
+                        onChange={(e)=>setNewTask(e.target.value)}
                         placeholder="e.g. Design dashboard UI"
                         className="w-full rounded-xl border border-gray-300 px-4 py-2.5 text-sm
                                   focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500
@@ -81,7 +85,9 @@ const TOdoPage = () => {
                       </label>
                       <input
                         type="text"
-                        
+                        value={setNewTask.description}
+                        onChange={(e)=>setNewTask(e.target.value)}
+                        name="description"
                         placeholder="Brief description of the task"
                         className="w-full rounded-xl border border-gray-300 px-4 py-2.5 text-sm
                                   focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500
