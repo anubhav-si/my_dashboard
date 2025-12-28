@@ -27,6 +27,8 @@ import SignupPage from './component/features/auth/signupPage.jsx'
 import NotFound from './component/errors/notFound.jsx'
 import { AuthProvider } from './context/authcontect.jsx'
 import SettingsPage from './component/features/settings/settings.jsx'
+import {Provider} from "react-redux";
+import appStore from './reduxToolKit/Store.js'
 
 const router = createBrowserRouter([
   {
@@ -128,9 +130,11 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <AuthProvider>
-      <RouterProvider router={router}/>
-    </AuthProvider>
+    <Provider store={appStore}>
+      <AuthProvider>
+        <RouterProvider router={router}/>
+      </AuthProvider>
+    </Provider>
     
   </StrictMode>,
 );

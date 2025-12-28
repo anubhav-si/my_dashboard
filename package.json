@@ -11,12 +11,14 @@
     "start": " npm run dev"
   },
   "dependencies": {
+    "@reduxjs/toolkit": "^2.11.2",
     "date-fns": "^4.1.0",
     "lucide-react": "^0.555.0",
     "react": "^19.2.0",
     "react-date-range": "^2.0.1",
     "react-dom": "^19.2.0",
     "react-icons": "^5.5.0",
+    "react-redux": "^9.2.0",
     "react-router-dom": "^7.9.6",
     "recharts": "^3.5.0"
   },
