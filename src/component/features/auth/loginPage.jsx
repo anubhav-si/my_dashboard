@@ -1,13 +1,15 @@
-import React,{useContext} from "react";
-import { AuthContext } from "../../../context/authcontect";
+import React from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { userLogin } from "../../../reduxToolKit/userSlice";
 
 const LoginPage = () => {
-  const {isLoggedIn, setIsLoggedIn} = useContext(AuthContext);
+  const dispatch = useDispatch();
+  let isLoggedin = useSelector((Store)=>Store.User.islogedin);
   const navigate = useNavigate();
   const handlesubmit = (e)=>{
     e.preventDefault();
-    setIsLoggedIn(true);
+    dispatch(userLogin());
     navigate("/");
   }
   return (

@@ -1,13 +1,16 @@
-import React, { useContext } from "react";
+import React from "react";
 import { FaUserCog, FaKey, FaHistory, FaSignOutAlt } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
-import { AuthContext } from "../../context/authcontect";
+import { useDispatch } from "react-redux";
+import { userLogout } from "../../reduxToolKit/userSlice";
 
 const ProfileDropdown = ({open,setOpen}) => {
-  const {isLoggedIn, setIsLoggedIn} = useContext(AuthContext);
+  
+  const dispatch = useDispatch();
+
   const navigate = useNavigate();
     const handleLogout = () => {
-      setIsLoggedIn(false);
+      dispatch(userLogout())
       navigate("/login");
     };
   return (
