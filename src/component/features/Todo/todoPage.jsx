@@ -85,8 +85,8 @@ const TOdoPage = () => {
                       </label>
                       <input
                         type="text"
-                        value={setNewTask.description}
-                        onChange={(e)=>setNewTask(e.target.value)}
+                        value={newTask.description}
+                        onChange={(e)=>setNewTask({"title":e.target.value})}
                         name="description"
                         placeholder="Brief description of the task"
                         className="w-full rounded-xl border border-gray-300 px-4 py-2.5 text-sm
