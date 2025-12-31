@@ -1,17 +1,67 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { userLogin } from "../../../reduxToolKit/userSlice";
 
 const LoginPage = () => {
+  const [error,seterror] = useState({});
+  const [formData,setFormData] = useState({
+    email:"",
+    password:"",
+
+  })
+ 
+  
   const dispatch = useDispatch();
   let isLoggedin = useSelector((Store)=>Store.User.islogedin);
   const navigate = useNavigate();
-  const handlesubmit = (e)=>{
+
+  const validate =() =>{
+  const newErrors = {}
+
+  if(!formData.email && formData.email.includes("@")) {
+    newErrors.email =" valid Email is required";
+  }
+  if(formData.password.length > 6 ) newErrors.password = "password must be minimum 6 character";
+  seterror(newErrors);
+  return Object.keys(newErrors).length === 0;
+}
+
+  const handlesubmit = async (e)=>{
     e.preventDefault();
+    const {email,password} = formData;
+    if(!validate()) return;
+    try {
+      if(!email || !password) {
+      seterror({frontend:"please enter email and password"})
+      throw new Error("please enter email and password")
+      }
+
+      const res =  await fetch("http://localhost:3001/login",{
+        method:"post",
+        headers:{
+          "Content-Type":"application/json"
+        },
+        body:JSON.stringify(formData),
+      })
+
+      const result = await res.json();
+
+      if(result.status === 'succesfull') {
+        dispatch(userLogin());
+        navigate("/");
+        return;
+      }
+       seterror({ api: result.error });
     
-    dispatch(userLogin());
-    navigate("/");
+
+    
+      
+    } catch (err) {
+      console.log(`error ${err}`);
+      
+    }
+    
   }
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-500 to-blue-400">
@@ -35,11 +85,15 @@ const LoginPage = () => {
             <label className="text-sm text-gray-600">Email address</label>
             <input
               type="email"
+              value={formData.email}
+              onChange={(e)=>setFormData({...formData, email: e.target.value})}
               placeholder="esteban_schiller@gmail.com"
               className="mt-1 w-full px-4 py-2 rounded-lg bg-gray-100 border border-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-400"
             />
           </div>
-
+             {error.email && (
+              <p className="text-red-500 text-sm">{error.email}</p>
+            )}
           {/* Password */}
           <div>
             <div className="flex items-center justify-between">
@@ -50,11 +104,15 @@ const LoginPage = () => {
             </div>
             <input
               type="password"
+              value={formData.password}
+              onChange={(e)=>setFormData({...formData,password: e.target.value})}
               placeholder="••••••••"
               className="mt-1 w-full px-4 py-2 rounded-lg bg-gray-100 border border-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-400"
             />
           </div>
-
+             {error.password && (
+              <p className="text-red-500 text-sm">{error.password}</p>
+            )}
           {/* Remember */}
           <div className="flex items-center space-x-2">
             <input type="checkbox" className="rounded" />

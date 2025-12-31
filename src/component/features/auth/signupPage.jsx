@@ -9,6 +9,7 @@ const SignupPage = () => {
   password: "",
   terms: false
 });
+
 const [error,seterror] = useState({});
 const handlechange = (e) =>{
   const {name,value,type,checked} = e.target;
@@ -35,9 +36,8 @@ const validate =() =>{
     e.preventDefault();
 
     if(!validate()) return;
-
-    
-    const res = await fetch("http://localhost:3001/signup",{
+    try {
+       const res = await fetch("http://localhost:3001/signup",{
       method:"post",
       headers: {
         "Content-Type":"application/json"
@@ -45,7 +45,19 @@ const validate =() =>{
       body: JSON.stringify(formData),
     })
     const result = await res.json();
-    if(result.status === 'ok') navigate("/login");
+     if (result.status !== "ok") {
+      // 👇 show backend error
+      seterror({ api: result.error });
+      return;
+    }
+
+     if(result.status === 'ok') navigate("/login");
+    } catch (err) {
+      console.log(err.message);
+      
+      
+    }
+   
     
   }
   return (
@@ -139,7 +151,9 @@ const validate =() =>{
               <p className="text-red-500 text-sm">{error.terms}</p>
             )}
           </div>
-
+            {error.api && (
+              <p className="text-red-500 text-sm">{error.api}</p>
+            )}
           {/* Button */}
           <button
             type="submit"
