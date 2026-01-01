@@ -11,7 +11,6 @@ const LoginPage = () => {
 
   })
  
-  
   const dispatch = useDispatch();
   let isLoggedin = useSelector((Store)=>Store.User.islogedin);
   const navigate = useNavigate();
@@ -19,10 +18,12 @@ const LoginPage = () => {
   const validate =() =>{
   const newErrors = {}
 
-  if(!formData.email && formData.email.includes("@")) {
-    newErrors.email =" valid Email is required";
+  if (!formData.email) {
+    newErrors.email = "Email is required";
+  } else if (!formData.email.includes("@")) {
+    newErrors.email = "Enter a valid email address";
   }
-  if(formData.password.length > 6 ) newErrors.password = "password must be minimum 6 character";
+  if(formData.password.length < 6 ) newErrors.password = "password must be minimum 6 character";
   seterror(newErrors);
   return Object.keys(newErrors).length === 0;
 }
@@ -30,12 +31,13 @@ const LoginPage = () => {
   const handlesubmit = async (e)=>{
     e.preventDefault();
     const {email,password} = formData;
-    if(!validate()) return;
+
+    if(!validate()) return ;
     try {
-      if(!email || !password) {
-      seterror({frontend:"please enter email and password"})
-      throw new Error("please enter email and password")
-      }
+      // if(!email || !password) {
+      // seterror({frontend:"please enter email and password"})
+      // throw new Error("please enter email and password")
+      // }
 
       const res =  await fetch("http://localhost:3001/login",{
         method:"post",
@@ -46,6 +48,10 @@ const LoginPage = () => {
       })
 
       const result = await res.json();
+      if (!res.ok) {
+        seterror({ api: result.error || "Login failed" });
+        return;
+      }
 
       if(result.status === 'succesfull') {
         dispatch(userLogin());
@@ -118,6 +124,9 @@ const LoginPage = () => {
             <input type="checkbox" className="rounded" />
             <span className="text-sm text-gray-600">Remember Password</span>
           </div>
+          {error.api && (
+            <p className="text-red-500 text-sm text-center">{error.api}</p>
+          )}
 
           {/* Button */}
           <button
