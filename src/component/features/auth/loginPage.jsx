@@ -34,11 +34,7 @@ const LoginPage = () => {
 
     if(!validate()) return ;
     try {
-      // if(!email || !password) {
-      // seterror({frontend:"please enter email and password"})
-      // throw new Error("please enter email and password")
-      // }
-
+     
       const res =  await fetch("http://localhost:3001/login",{
         method:"post",
         headers:{
