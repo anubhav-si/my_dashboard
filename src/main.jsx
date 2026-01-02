@@ -28,6 +28,7 @@ import { AuthProvider } from './context/authcontect.jsx'
 import SettingsPage from './component/features/settings/settings.jsx'
 import {Provider} from "react-redux";
 import appStore from './reduxToolKit/Store.js'
+import UserProfile from './component/layout/UserProfile.jsx'
 
 const router = createBrowserRouter([
   {
@@ -46,6 +47,10 @@ const router = createBrowserRouter([
       {
         index:true,
         element:<Main_contentpage/>
+      },
+      {
+        path:"userprofile",
+        element:<UserProfile/>
       },
       {
         path:"dashboard",

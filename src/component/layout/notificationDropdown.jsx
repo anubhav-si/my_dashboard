@@ -2,6 +2,7 @@ import React from "react";
 import { FiSettings } from "react-icons/fi";
 import { MdEventNote, MdErrorOutline } from "react-icons/md";
 import { FaUserCircle } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const NotificationDropdown = ({open,setOpen}) => {
   return (
@@ -40,6 +41,7 @@ const NotificationDropdown = ({open,setOpen}) => {
         </div>
 
         {/* ITEM 3 */}
+        <Link to={"/userprofile"}>
         <div className="flex items-start gap-3 px-5 py-3 hover:bg-gray-50 cursor-pointer">
           <div className="w-9 h-9 flex items-center justify-center rounded-full bg-purple-100 text-purple-500">
             <FaUserCircle />
@@ -49,6 +51,7 @@ const NotificationDropdown = ({open,setOpen}) => {
             <p className="text-xs text-gray-500">Update your profile</p>
           </div>
         </div>
+        </Link>
 
         {/* ITEM 4 */}
         <div className="flex items-start gap-3 px-5 py-3 hover:bg-gray-50 cursor-pointer">

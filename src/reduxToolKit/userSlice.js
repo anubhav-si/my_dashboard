@@ -4,14 +4,16 @@ const userSlice = createSlice({
     name:"user",
     initialState:{
         islogedin:false,
-        userName:""
+        profile: null
     },
     reducers:{
         userLogin:(state,action)=>{
             state.islogedin = true;
+            state.profile = action.payload;
         },
         userLogout:(state,action)=>{
             state.islogedin = false;
+            state.profile = null;
         }
     }
 })
