@@ -10,7 +10,7 @@ const LoginPage = () => {
     password:"",
 
   })
- 
+
   const dispatch = useDispatch();
   let isLoggedin = useSelector((Store)=>Store.User.islogedin);
   const navigate = useNavigate();
@@ -49,9 +49,9 @@ const LoginPage = () => {
         seterror({ api: result.error || "Login failed" });
         return;
       }
-
+      const {user} = result;
       if(result.status === 'succesfull') {
-        dispatch(userLogin());
+        dispatch(userLogin(user));
         navigate("/");
         return;
       }

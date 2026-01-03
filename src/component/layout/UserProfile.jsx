@@ -1,21 +1,19 @@
 
 import React ,{useEffect, useState} from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch,useSelector } from "react-redux";
 import {userLogin} from "../../reduxToolKit/userSlice";
 export default function UserProfile({ }) {
-    const dispatch = useDispatch();
-    const [user,setUser] = useState({});
-    const getProfileData =  async () => {
-         const res = await fetch("http://localhost:3001/me",{
-                        credentials:"include",
-                    })
-        const userdata = await res.json();
-        setUser(userdata);
-        dispatch(userLogin(userdata));
+    
+  const {islogedin,profile} = useSelector((store)=> store.User)
+    if (!islogedin || !profile) {
+       return (
+          <div className="h-full flex items-center justify-center text-gray-600">
+            Loading profile...
+          </div>
+        );
+      
     }
-    useEffect( ()=>{
-      getProfileData();
-    },[])
+    
   // user = data fetched from backendu
   return (
     <div className="h-full bg-[#bfdbfe] flex items-center justify-center p-6">
@@ -23,23 +21,23 @@ export default function UserProfile({ }) {
         {/* Header */}
         <div className="flex items-center gap-4 border-b pb-4">
           <div className="h-14 w-14 rounded-full bg-indigo-500 flex items-center justify-center text-white text-xl font-bold">
-            {user?.username?.charAt(0).toUpperCase()}
+            { profile.username?.charAt(0).toUpperCase()}
           </div>
           <div>
             <h2 className="text-xl font-semibold text-gray-800">
-              {user?.username}
+              {profile.username || "user name"}
             </h2>
-            <p className="text-sm text-gray-500">{user?.designation}</p>
+            <p className="text-sm text-gray-500">{profile.designation || "user designation"}</p>
           </div>
         </div>
 
         {/* Details */}
         <div className="mt-6 space-y-4">
-          <InfoRow label="Email" value={user?.email || "email.com"} />
-          <InfoRow label="User ID" value={user?._id || "my name"} />
+          <InfoRow label="Email" value={ profile.email || "email.com"} />
+          <InfoRow label="User ID" value={profile._id || " name"} />
           <InfoRow
             label="Joined On"
-            value={new Date(user?.createdAt).toLocaleDateString()}
+            value={new Date(profile.createdAt).toLocaleDateString() || "date"}
           />
         </div>
 

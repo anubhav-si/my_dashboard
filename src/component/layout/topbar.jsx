@@ -1,4 +1,5 @@
 import React ,{useState} from "react";
+import { useSelector } from "react-redux";
 import img from "../../assets/icons/near_srh.png";
 import icon from "../../assets/icons/icon_right.png";
 import usericon from "../../assets/icons/user_icon.png";
@@ -10,6 +11,7 @@ const Navigation_topbar = ({setloginStatus}) => {
   const [open,setOpen] = useState(false);
   const [active,setactive] = useState("");
   const [darkMode, setDarkMode] = useState(false);
+  const {username,designation} = useSelector((Store)=>Store.User.profile)
   return (
     <div className="w-full sticky top-0 left-52 z-50 bg-white shadow-[6px_6px_20px_rgba(0,0,0,0.08)] flex items-center justify-between px-6 mb-10 h-16">
 
@@ -64,8 +66,8 @@ const Navigation_topbar = ({setloginStatus}) => {
           <img className="w-9 h-9 rounded-full" src={usericon} alt="user" />
 
           <div className="leading-tight">
-            <h3 className="text-sm font-medium text-gray-800">anubhav singh</h3>
-            <p className="text-xs text-gray-500">Admin</p>
+            <h3 className="text-sm font-medium text-gray-800">{username}</h3>
+            <p className="text-xs text-gray-500">{designation}</p>
           </div>
         </div>
 
