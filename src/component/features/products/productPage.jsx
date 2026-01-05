@@ -7,7 +7,10 @@ const ProductsPage = () => {
   
   return (
     <div className="px-6 w-full">
-      <h1 className=" pl-4 font-extrabold mb-7 text-3xl">Products</h1>
+      <div>
+        <h1 className=" pl-4 font-extrabold mb-7 text-3xl">Products</h1>
+        
+      </div>
 
       
       {/* Product cards grid */}

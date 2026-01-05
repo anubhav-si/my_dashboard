@@ -21,10 +21,10 @@ const handlechange = (e) =>{
 const validate =() =>{
   const newErrors = {}
 
-  if(!formData.email && formData.email.includes("@")) {
+  if(!formData.email || formData.email.includes("@")) {
     newErrors.email =" valid Email is required";
   }
-  if(!formData.username && formData.username.length>4) newErrors.username = " valid username is required";
+  if(!formData.username || formData.username.length>4) newErrors.username = " valid username is required";
   if(formData.password.length < 6 ) newErrors.password = "password must be minimum 6 character";
   if(!formData.terms) newErrors.terms = "accept Terms & Condition";
 

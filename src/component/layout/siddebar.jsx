@@ -9,7 +9,7 @@ const Sidebar = () =>{
         const menu = [
             { name: "Home", path: "/" },
             { name: "Dashboard", path: "/dashboard" },
-            { name: "Product", path: "/products" },
+            { name: "Products", path: "/products" },
             { name: "Bestseller", path: "/bestseller" },
             { name: "Inbox", path: "/inbox" },
             { name: "Order Lists", path: "/order_list" },
