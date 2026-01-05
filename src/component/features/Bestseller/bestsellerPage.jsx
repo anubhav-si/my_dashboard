@@ -2,7 +2,7 @@ import React, { useState,useEffect } from "react";
 import ProductCard from "./component/cards";
 import ShimmerUI from "./component/shimmerUI";
 
-const FavouritePage = () => {
+const BestsellerPage = () => {
     const [product , setproduct] = useState([]);
     const productApiData = async () =>{
        const  data =  await fetch("https://fakestoreapi.com/products");
@@ -17,7 +17,7 @@ const FavouritePage = () => {
     <div>
       {product.length === 0 && <ShimmerUI />}
       <div>
-          <h1 className='my-7 mx-12 font-extrabold text-3xl'>Favorites</h1>
+          <h1 className='my-7 mx-12 font-extrabold text-3xl'>Bestseller</h1>
       </div>
       <div className="grid grid-cols-3 gap-6 m-10">
         {product.map((p)=> <ProductCard product={p}/>)}
@@ -26,4 +26,4 @@ const FavouritePage = () => {
   )
 }
 
-export default FavouritePage
+export default BestsellerPage;

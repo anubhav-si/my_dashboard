@@ -10,7 +10,7 @@ const Sidebar = () =>{
             { name: "Home", path: "/" },
             { name: "Dashboard", path: "/dashboard" },
             { name: "Product", path: "/products" },
-            { name: "Favorites", path: "/favourite" },
+            { name: "Bestseller", path: "/bestseller" },
             { name: "Inbox", path: "/inbox" },
             { name: "Order Lists", path: "/order_list" },
             { name: "Product Stock", path: "/product_stock" },
@@ -18,7 +18,7 @@ const Sidebar = () =>{
             { name: "To-Do", path: "/to_do" },
             { name: "Contact", path: "/contact" },
             { name: "Invoice", path: "/Invoice" },
-            { name: "Ui Elements", path: "/ui_elements" },
+            { name: "Offers", path: "/offers" },
             { name: "Team", path: "/team" },
             { name: "Settings", path: "/settings" },
 

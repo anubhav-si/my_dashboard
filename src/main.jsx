@@ -6,7 +6,7 @@ import App from './App.jsx'
 import Dashboardpage from './component/features/dashboard/dashboardpage.jsx'
 import Main_contentpage from './component/layout/main_contentpage.jsx'
 import ProductsPage from './component/features/products/productPage.jsx'
-import FavouritePage from './component/features/Favorites/favouritePage.jsx'
+import BestsellerPage from './component/features/Bestseller/bestsellerPage.jsx'
 import Usercomponent from './component/features/inbox/component/usercomponent.jsx'
 import Inboxpage from './component/features/inbox/inboxpage.jsx'
 import Order_ListPage from './component/features/order_list/order_ListPage.jsx'
@@ -15,7 +15,7 @@ import PricingPage from './component/features/pricing/pricingPage.jsx'
 import TOdoPage from './component/features/Todo/todoPage.jsx'
 import ContactPage from './component/features/contact/contactpage.jsx'
 import InvoicePage from './component/features/invoice/invoicePage.jsx'
-import UIElementsPage from './component/features/ui_element/uiElementPage.jsx'
+import OffersPage from './component/features/Offers/offersPage.jsx'
 import TeamPage from './component/features/team/teamPage.jsx'
 import AddNewContact from './component/features/contact/components/addNewContectPage.jsx'
 import ContactListPage from './component/features/contact/components/contactListPage.jsx'
@@ -24,7 +24,6 @@ import AddNewMember from './component/features/team/components/addNewMember.jsx'
 import LoginPage from './component/features/auth/loginPage.jsx'
 import SignupPage from './component/features/auth/signupPage.jsx'
 import NotFound from './component/errors/notFound.jsx'
-import { AuthProvider } from './context/authcontect.jsx'
 import SettingsPage from './component/features/settings/settings.jsx'
 import {Provider} from "react-redux";
 import appStore from './reduxToolKit/Store.js'
@@ -61,8 +60,8 @@ const router = createBrowserRouter([
         element:<ProductsPage/>
       },
       {
-        path:"favourite",
-        element:<FavouritePage/>
+        path:"bestseller",
+        element:<BestsellerPage/>
       },
        {
         path:"inbox",
@@ -105,8 +104,8 @@ const router = createBrowserRouter([
         element:<InvoicePage/>
       },
       {
-        path:"ui_elements",
-        element:<UIElementsPage/>
+        path:"offers",
+        element:<OffersPage/>
       },
       {
         path:"team",
@@ -135,9 +134,9 @@ const router = createBrowserRouter([
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <Provider store={appStore}>
-      <AuthProvider>
+      
         <RouterProvider router={router}/>
-      </AuthProvider>
+      
     </Provider>
     
   </StrictMode>,

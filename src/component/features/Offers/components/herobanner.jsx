@@ -1,7 +1,7 @@
 import React from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
-const ProductHero = () => {
+const Herobanner = () => {
   return (
     <div className="relative bg-blue-500 text-white rounded-2xl h-[250px] flex items-center justify-between px-10 overflow-hidden shadow-md">
 
@@ -32,4 +32,4 @@ const ProductHero = () => {
   );
 };
 
-export default ProductHero;
+export default Herobanner;

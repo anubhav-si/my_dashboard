@@ -4,6 +4,7 @@ import {
 } from "recharts";
 
 
+
 const dataA = [
   { v: 40 }, { v: 20 }, { v: 30 }, { v: 10 }, { v: 25 }, { v: 18 }, { v: 15 }
 ];
@@ -71,7 +72,7 @@ const  UIElementsPage = () => {
           </select>
         </div>
       </div>
-
+      
       {/* ================= BAR CHART ================= */}
        <div className="bg-white p-6 my-6 border rounded-xl">
             <h2 className="text-lg font-semibold mb-4">Bar Chart</h2>
