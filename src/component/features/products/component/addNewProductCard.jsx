@@ -3,7 +3,7 @@ import { Heart, ChevronLeft, ChevronRight, Star } from "lucide-react";
 import products from "../utils/productdata";
 import AddProductImageCard from "./AddProductImageCard";
 
-const AddNewProductCard = ({isopen,setisOpen,setResp}) => {
+const AddNewProductCard = ({isopen,setisOpen,setResponseMessage}) => {
   const [productData,setProductData] = useState({
     name:'',
     description:'',
@@ -41,18 +41,17 @@ const AddNewProductCard = ({isopen,setisOpen,setResp}) => {
 
     const response = await res.json();
 
-    if (!res.statusMessage === "ok"){
-      throw new Error("Failed to add product");
-    }
-     if (res.statusMessage === "ok"){
-      console.log(res.message);
-      setisOpen(!isopen);
-    }
-   
+    if (!response.success) {
+        throw new Error(response.message);
+      }
+    console.log(response.message);
+    setisOpen(!isopen);
+    setResponseMessage(response.message);
+    
      
     
   } catch (err) {
-    setResp(err.message);
+    setResponseMessage(err.message);
     console.log(err.message);
     
     
