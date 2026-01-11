@@ -104,9 +104,9 @@ const handleSearchUser = ()=>{
         </div>
 
         {/* Input Box */}
-        <div className="h-16 bg-white flex items-center px-4 gap-3 border-t">
+        <div className="h-16  flex items-center px-4 gap-3 ">
           <input
-            className="flex-1 px-4 py-2 rounded-full border focus:outline-none"
+            className="flex-1 px-4 py-2 bg-gray-100 rounded-full border focus:outline-none"
             placeholder="Type a message"
           />
           <button className="bg-[#075e54] text-white px-6 py-2 rounded-full hover:bg-[#064c45]">
