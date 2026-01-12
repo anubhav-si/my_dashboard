@@ -9,7 +9,17 @@ const ProfileDropdown = ({open,setOpen}) => {
   const dispatch = useDispatch();
 
   const navigate = useNavigate();
-    const handleLogout = () => {
+    const handleLogout = async() => {
+      try {
+        const res = fetch("http://localhost:3001/logout",{
+          credentials:"include",
+        })
+        const data = await res.json();
+        if (data.success)  return;          
+        
+      } catch (err) {
+        
+      }
       dispatch(userLogout())
       navigate("/login");
     };

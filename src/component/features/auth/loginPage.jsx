@@ -6,8 +6,8 @@ import { userLogin } from "../../../reduxToolKit/userSlice";
 const LoginPage = () => {
   const [error,seterror] = useState({});
   const [formData,setFormData] = useState({
-    email:"",
-    password:"",
+    email:"anubhav@gmail.com",
+    password:"anubhav",
 
   })
 

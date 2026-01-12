@@ -13,7 +13,7 @@ export default function UserProfile({ }) {
         );
       
     }
-    
+
   // user = data fetched from backendu
   return (
     <div className="h-full bg-[#bfdbfe] flex items-center justify-center p-6">
