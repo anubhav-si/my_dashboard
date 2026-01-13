@@ -51,19 +51,24 @@ function App() {
   }
 
 
-  return (
-     <div className="bg-[#bfdbfe]  min-h-screen"> 
-          <Sidebar className="block"/>
-     
-      <div className="ml-52 block">
-            
-            <Navigation_topbar />
-            <Outlet className="w-full h-full"/>
-            
+ return (
+  <div className="bg-[#bfdbfe] min-h-screen">
+
+    <Navigation_topbar />
+
+    <div className="flex ">
+      
+      <Sidebar />
+
+      <div className="flex-1  md:ml-52 p-4">
+        <Outlet />
       </div>
 
     </div>
-  )
+
+  </div>
+);
+
 }
 
 export default App
