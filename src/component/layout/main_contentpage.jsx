@@ -12,7 +12,7 @@ import salesData from './dataForMainPageChart';
 const Main_contentpage = () => {
   
   return (
-   <div className=' w-full overflow-y-auto px-4 sm:px-12 md:px-8'>
+   <div className=' w-full overflow-y-auto  '>
        
         <div>
           <h1 className='mb-6 sm:mb-7 mx-2 sm:mx-6 md:mx-12 font-extrabold text-2xl sm:text-3xl'>Home</h1>
