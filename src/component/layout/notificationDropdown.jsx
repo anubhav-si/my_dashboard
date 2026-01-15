@@ -34,10 +34,13 @@ const NotificationDropdown = ({open,setOpen}) => {
           <div className="w-9 h-9 flex items-center justify-center rounded-full bg-pink-100 text-pink-500">
             <MdEventNote />
           </div>
-          <div>
+          <Link to={"/events"}>
+           <div>
             <p className="text-sm font-medium text-gray-800">Event Update</p>
             <p className="text-xs text-gray-500">An event date update again</p>
           </div>
+          </Link>
+         
         </div>
 
         {/* ITEM 3 */}

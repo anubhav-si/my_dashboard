@@ -28,6 +28,7 @@ import SettingsPage from './component/features/settings/settings.jsx'
 import {Provider} from "react-redux";
 import appStore from './reduxToolKit/Store.js'
 import UserProfile from './component/layout/UserProfile.jsx'
+import EventUpdateElement from './component/layout/eventUpdateElement.jsx'
 
 const router = createBrowserRouter([
   {
@@ -50,6 +51,10 @@ const router = createBrowserRouter([
       {
         path:"userprofile",
         element:<UserProfile/>
+      },
+      {
+        path:"events",
+        element:<EventUpdateElement/>
       },
       {
         path:"dashboard",
