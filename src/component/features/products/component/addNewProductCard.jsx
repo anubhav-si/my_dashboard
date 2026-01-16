@@ -1,6 +1,5 @@
 import React ,{useState}from "react";
 import { Heart, ChevronLeft, ChevronRight, Star } from "lucide-react";
-import products from "../utils/productdata";
 import AddProductImageCard from "./AddProductImageCard";
 
 const AddNewProductCard = ({isopen,setisOpen,setResponseMessage}) => {

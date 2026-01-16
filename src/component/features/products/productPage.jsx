@@ -1,14 +1,24 @@
 import React, { useEffect, useState } from "react";
-
 import ProductCard from "./component/productCards";
-import products from "./utils/productdata";
 import AddNewProductCard from "./component/addNewProductCard.jsx";
+import ShimmerProductCard from "./component/shimmerProductCard.jsx";
 
 const ProductsPage = () => {
   const [responseMessage,setResponseMessage] = useState(null);
-  console.log(responseMessage);
+  const [productList,setProductList] = useState([]);
+  const shimmerCount = [1,2,3,4,5,6,];
+  
+  const getProductList = async () =>{
+    const res = await fetch("http://localhost:3001/product/getproducts",{
+      credentials:"include",
+    });
+    const list  = await res.json();
+    
+    setProductList(list.products);
+  }
   
   useEffect(()=>{
+    getProductList();
     if (responseMessage) {
       const timer = setTimeout(()=>{
         setResponseMessage(null);
@@ -28,6 +38,7 @@ const ProductsPage = () => {
               className="shadow rounded-full flex  px-4 py-2 mr-10 mb-7 font-bold text-white bg-blue-600">
               <button>Add Product</button>
         </div>}
+        
          
       </div>
       { 
@@ -42,11 +53,19 @@ const ProductsPage = () => {
           {responseMessage}
         </div>
       }
+      {productList.length === 0 && (
+        <div className="grid grid-cols-3 gap-6 mt-10">
+          {shimmerCount.map((c) => (
+            <ShimmerProductCard key={c} />
+          ))}
+        </div>
+      )}
+
       
       {/* Product cards grid */}
       <div className="grid grid-cols-3 gap-6 mt-10">
-        {products.map((p) => (
-          <ProductCard key={p.id} product={p} img={p.img}/>
+        {productList.map((p) => (
+          <ProductCard key={p._id} product={p} />
         ))}
       </div>
     </div>

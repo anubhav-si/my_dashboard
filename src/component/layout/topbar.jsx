@@ -15,7 +15,7 @@ const Navigation_topbar = ({setloginStatus}) => {
   return (
     <div className="w-full sticky top-0 z-50 bg-white shadow-[6px_6px_20px_rgba(0,0,0,0.08)] flex items-center justify-between px-4 md:px-6 mb-6 h-16">
 
-      <div className="flex items-center gap-3">
+      <div className="flex items-center gap-20">
         <div>
                 <h1 className="m-auto py-3 font-extrabold text-3xl"> TRACK IT</h1>
         </div>
