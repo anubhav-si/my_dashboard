@@ -1,15 +1,26 @@
 import React ,{useState,useEffect} from 'react'
+import { useDispatch } from 'react-redux';
+import { addProductList } from '../../reduxToolKit/productSlice';
 
 
 const Prod_co_mainP = () => {
+const dispatch = useDispatch();
 const [product , setproduct] = useState([]);
-const productApiData = async () =>{
-   const  data =  await fetch("https://fakestoreapi.com/products");
-    const json = await data.json();
-    setproduct(json);
-}
+// console.log(product);
+
+
+ 
+  const getProductList = async () =>{
+        const res = await fetch("http://localhost:3001/product/getproducts",{
+        credentials:"include",
+        });
+        const list  = await res.json();
+        
+        setproduct(list.products);
+        dispatch(addProductList(list.products));
+    }
   useEffect(() => {
-         productApiData()
+         getProductList()
     },[]
     );
   return (
@@ -39,18 +50,18 @@ const productApiData = async () =>{
 
                         <tbody>
                         {product.map((item) => (
-                            <tr key={item.id} className="border-b last:border-none text-sm">
+                            <tr key={item._id} className="border-b last:border-none text-sm">
                             <td className="py-4 flex items-center gap-3">
                                 <img
-                                src={item.image || "no"}
+                                src={item.images[0].url || "no"}
                                 className="h-10 w-10 rounded-lg object-cover"
                                 />
-                                <span className="font-medium">{item.title || "00"}</span>
+                                <span className="font-medium">{item.name || "00"}</span>
                             </td>
 
-                            <td className="text-gray-600">{item.category || "00"}</td>
+                            <td className="text-gray-600">{item.category || "Not given"}</td>
 
-                            <td className="text-gray-600">{item.rating.rate || "00"}</td>
+                            <td className="text-gray-600">{item.rating || "00"}</td>
 
                             <td className="text-gray-600">{item.rating.count|| "00"}</td>
 

@@ -15,8 +15,8 @@ const ProductCard = ({product}) => {
         </button>
 
         <img
-          src={product.image}
-          alt={product.title}
+          src={product.images[0].url}
+          alt={product.name}
           className="h-[180px] object-contain"
         />
 
@@ -26,7 +26,7 @@ const ProductCard = ({product}) => {
       </div>
 
       {/* Title */}
-      <h3 className="mt-4 text-lg font-semibold">{product.title}</h3>
+      <h3 className="mt-4 text-lg font-semibold">{product.name}</h3>
 
       {/* Price */}
       <p className="text-blue-600 font-semibold mt-1">{product.price}</p>

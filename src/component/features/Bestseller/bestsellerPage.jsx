@@ -1,21 +1,21 @@
 import React, { useState,useEffect } from "react";
 import ProductCard from "./component/cards";
 import ShimmerUI from "./component/shimmerUI";
+import { useSelector } from "react-redux";
 
 const BestsellerPage = () => {
-    const [product , setproduct] = useState([]);
-    const productApiData = async () =>{
-       const  data =  await fetch("https://fakestoreapi.com/products");
-        const json = await data.json();
-        setproduct(json);
-    }
-    useEffect(()=>{
-        productApiData();
-    },[]);
+    
+    const product = useSelector((store)=> store.product.productlist); 
+
+     if (!product || product.length === 0) {
+        return <ShimmerUI />;
+      }
+
+   
   return (
 
     <div>
-      {product.length === 0 && <ShimmerUI />}
+      {/* {product.length === 0 && <ShimmerUI />} */}
       <div>
           <h1 className='my-7 mx-12 font-extrabold text-3xl'>Bestseller</h1>
       </div>

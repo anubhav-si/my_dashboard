@@ -2,11 +2,14 @@ import React, { useEffect, useState } from "react";
 import ProductCard from "./component/productCards";
 import AddNewProductCard from "./component/addNewProductCard.jsx";
 import ShimmerProductCard from "./component/shimmerProductCard.jsx";
+import { useDispatch } from "react-redux";
+import { addProductList } from "../../../reduxToolKit/productSlice.js";
 
 const ProductsPage = () => {
   const [responseMessage,setResponseMessage] = useState(null);
   const [productList,setProductList] = useState([]);
   const shimmerCount = [1,2,3,4,5,6,];
+  const dispatch = useDispatch();
   
   const getProductList = async () =>{
     const res = await fetch("http://localhost:3001/product/getproducts",{
@@ -15,6 +18,7 @@ const ProductsPage = () => {
     const list  = await res.json();
     
     setProductList(list.products);
+    dispatch(addProductList(list.products));
   }
   
   useEffect(()=>{

@@ -1,6 +1,5 @@
 import React ,{useState} from "react";
 import { useSelector } from "react-redux";
-import img from "../../assets/icons/near_srh.png";
 import icon from "../../assets/icons/icon_right.png";
 import usericon from "../../assets/icons/user_icon.png";
 import ProfileDropdown from "./profileDropdown";
@@ -17,7 +16,7 @@ const Navigation_topbar = ({setloginStatus}) => {
 
       <div className="flex items-center gap-20">
         <div>
-                <h1 className="m-auto py-3 font-extrabold text-3xl"> TRACK IT</h1>
+                <h1 className="m-auto py-3 font-extrabold text-3xl"> My Dashboard</h1>
         </div>
         {/* <img className="w-14 md:w-20" src={img} alt="logo" /> */}
 
