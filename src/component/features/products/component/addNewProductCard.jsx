@@ -7,7 +7,7 @@ const AddNewProductCard = ({ isopen, setisOpen, setResponseMessage }) => {
     name: "",
     description: "",
     price: "",
-    category: "",   // ✅ added
+    category: "",   
     image: null,
   });
 
