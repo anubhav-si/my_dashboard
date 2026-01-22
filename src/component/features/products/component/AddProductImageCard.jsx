@@ -21,24 +21,6 @@ const AddProductImageCard = ({ onImageSelect }) => {
         setPreview(null);
     };
  
- 
-//   const handleImageChange = (e) => {
-//     const file = e.target.files[0];
-//     if (!file) return;
-
-//     const imageUrl = URL.createObjectURL(file);
-//     setPreview(imageUrl);
-
-//     // send file to parent (for backend later)
-//     if (onImageSelect) {
-//       onImageSelect(file);
-//     }
-//   };
-
-//   const removeImage = () => {
-//     setPreview(null);
-//   };
-
   return (
     <div className="w-[300px] h-[240px] rounded-2xl border-2 border-dashed border-blue-300 bg-blue-50 flex items-center justify-center relative overflow-hidden shadow-sm hover:shadow-md transition">
 
